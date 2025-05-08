@@ -1,2 +1,18 @@
 # Inco
-Script for Inco Testnet
+CHANNEL: https://t.me/blockfuchi
+
+**RU**
+Скрипт на автоматическое выполнение активностей на comfy.testnet.inco.org и hangman.testnet.inco.org
+
+**Функции**
+1. Клейм тестовых USDC и CUSDC
+2. Shield и Unshield тестовых токенов
+3. Автоматическое создание игры в Hangman
+4. Имитация игры в Hangman
+
+**Инструкция**
+1. Для начала работы вам понадобиться Python 3.10+
+2. Установите все библиотеки pip install -r requirements.txt
+3. Заполните файл wallets.txt приватными ключами
+4. Откройте config.py выставите нужные вам тайминги, и хотите ли вы чтобы порядок кошельков перемешивался. Так же можете выставить вероятность выбора ошибочной буквы в Hangman
+5. Запустите скрипт python main.py
