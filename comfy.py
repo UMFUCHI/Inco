@@ -25,7 +25,7 @@ async def mint_usdc(w3, wallet, public):
             "gas": random.randint(170000, 200000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0x9C868614ffca7da36B36330b1f317B117c7834dE"
+            "to": "0xAF3D7999e798C2E365969A8B5702eedCA854fAAd"
         }
 
         for attempt in range(3):
@@ -64,7 +64,7 @@ async def mint_cusdc(w3, wallet, public):
             "gas": random.randint(170000, 200000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0x50930beB58690a21c528dC351d6818F51CAfA480"
+            "to": "0x3197AF097D9B2ff572f5b5BA7141226408A8E1f6"
         }
 
         for attempt in range(3):
@@ -104,7 +104,7 @@ async def shield_usdc(w3, wallet, public):
             "gas": random.randint(170000, 200000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0x9C868614ffca7da36B36330b1f317B117c7834dE"
+            "to": "0xAF3D7999e798C2E365969A8B5702eedCA854fAAd"
         }
 
         for attempt in range(3):
@@ -170,7 +170,7 @@ async def unshield_cusdc(w3, wallet, public):
             "gas": random.randint(190000, 220000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0x50930beB58690a21c528dC351d6818F51CAfA480"
+            "to": "0x3197AF097D9B2ff572f5b5BA7141226408A8E1f6"
         }
 
         for attempt in range(3):
