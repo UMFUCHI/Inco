@@ -12,6 +12,8 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+wrap_contract = '0x3197AF097D9B2ff572f5b5BA7141226408A8E1f6'
+usdc_contract = '0xAF3D7999e798C2E365969A8B5702eedCA854fAAd'
 
 async def mint_usdc(w3, wallet, public):
     try:
@@ -25,7 +27,7 @@ async def mint_usdc(w3, wallet, public):
             "gas": random.randint(170000, 200000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0xAF3D7999e798C2E365969A8B5702eedCA854fAAd"
+            "to": usdc_contract
         }
 
         for attempt in range(3):
@@ -64,7 +66,7 @@ async def mint_cusdc(w3, wallet, public):
             "gas": random.randint(170000, 200000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0x3197AF097D9B2ff572f5b5BA7141226408A8E1f6"
+            "to": wrap_contract
         }
 
         for attempt in range(3):
@@ -98,13 +100,13 @@ async def shield_usdc(w3, wallet, public):
         tx = {
             "chainId": 84532,
             "data": f"0x095ea7b3"
-                    f"00000000000000000000000050930beb58690a21c528dc351d6818f51cafa480"
+                    f"000000000000000000000000{wrap_contract.lower()[2:]}"
                     f"{amount:064x}",
             "from": public,
             "gas": random.randint(170000, 200000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0xAF3D7999e798C2E365969A8B5702eedCA854fAAd"
+            "to": usdc_contract
         }
 
         for attempt in range(3):
@@ -133,7 +135,7 @@ async def shield_usdc(w3, wallet, public):
             "gas": random.randint(190000, 220000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0x3197AF097D9B2ff572f5b5BA7141226408A8E1f6"
+            "to": wrap_contract
         }
 
         for attempt in range(3):
@@ -170,7 +172,7 @@ async def unshield_cusdc(w3, wallet, public):
             "gas": random.randint(190000, 220000),
             "gasPrice": await w3.eth.gas_price,
             "nonce": await w3.eth.get_transaction_count(public),
-            "to": "0x3197AF097D9B2ff572f5b5BA7141226408A8E1f6"
+            "to": wrap_contract
         }
 
         for attempt in range(3):
