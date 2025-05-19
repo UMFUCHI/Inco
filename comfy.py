@@ -1,6 +1,7 @@
 import asyncio
 import random
 import logging
+from config import TX_DELAY
 from eth_abi import encode
 
 logging.basicConfig(
@@ -12,8 +13,8 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
-wrap_contract = '0x3197AF097D9B2ff572f5b5BA7141226408A8E1f6'
-usdc_contract = '0xAF3D7999e798C2E365969A8B5702eedCA854fAAd'
+wrap_contract = '0xA449bc031fA0b815cA14fAFD0c5EdB75ccD9c80f'
+usdc_contract = '0xAF33ADd7918F685B2A82C1077bd8c07d220FFA04'
 
 async def mint_usdc(w3, wallet, public):
     try:
@@ -108,7 +109,6 @@ async def shield_usdc(w3, wallet, public):
             "nonce": await w3.eth.get_transaction_count(public),
             "to": usdc_contract
         }
-
         for attempt in range(3):
             try:
                 gas_estimate = await w3.eth.estimate_gas(tx)
@@ -126,7 +126,8 @@ async def shield_usdc(w3, wallet, public):
             raise Exception(f"[{public}] approve transaction failed")
 
         logger.info(f"[{public}] approve DONE | 0x{tx_hash.hex()}")
-
+        await asyncio.sleep(random.uniform(TX_DELAY[0], TX_DELAY[1]))
+        
         tx = {
             "chainId": 84532,
             "data": f"0xea598cb0"
